@@ -9,7 +9,7 @@ void setup()
   delay(1000);
   gsm.println("AT+CMGS=\"+918957679338\"\r");
   delay(1000);
-  gsm.println("hello");
+  gsm.println("flood alert");
   delay(500);
   gsm.println((char)26);
   delay(2000);
@@ -19,7 +19,7 @@ void setup()
   delay(1000);
   gsm.println("AT+CMGS=\"+918948041190\"\r");
   delay(1000);
-  gsm.println("hello");
+  gsm.println("flood alert");
   delay(500);
   gsm.println((char)26);
   delay(2000);
