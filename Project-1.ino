@@ -1,17 +1,22 @@
-int t=2;
-int e=3;
+#include<SoftwareSerial.h>
+SoftwareSerial gsm(2,3);
+int t=5;
+int e=6;
 int dist;
 long int ti;
-int LED1=12;
-int B=5;
+int LED=12;
+int B=7;
 
 void setup() 
 {  
            pinMode(t,OUTPUT);
            pinMode(e,INPUT);                  
            Serial.begin(9600);   
-           pinMode(LED1, OUTPUT);
+           pinMode(LED, OUTPUT);
            pinMode(B, OUTPUT); 
+           delay(5000);
+           Serial.begin(9600);
+           gsm.begin(9600);
 }
 
 void loop() 
@@ -25,10 +30,49 @@ void loop()
                 dist=(ti*0.034)/2;
                 Serial.print("DISTANCE = ");
                 Serial.println(dist);
- if(dist<=5)
+ if(dist<=10)
  {
-                digitalWrite(LED1, HIGH); 
+                digitalWrite(LED, HIGH); 
                 digitalWrite(B, HIGH);
+                delay(3000);
+                digitalWrite(B,LOW);
+                 Serial.println("gsm initialised");
+                          gsm.println("AT+CMGF=1");
+                          delay(1000);
+                          gsm.println("AT+CMGS=\"+918948041190\"\r"); 
+                          delay(1000);
+                              gsm.println("FLOOD ALERT!!");
+                          delay(100);
+                          gsm.println((char)26);
+                          delay(5000);
+
+                             gsm.println("AT+CMGF=1");
+                        delay(1000);
+                          gsm.println("AT+CMGS=\"+918957679338\"\r"); 
+                          delay(1000);
+                              gsm.println("FLOOD ALERT!!");
+                          delay(100);
+                          gsm.println((char)26);
+                          delay(5000);
+                                 gsm.println("AT+CMGF=1");
+                        delay(1000);
+                          gsm.println("AT+CMGS=\"+919140864445\"\r"); 
+                          delay(1000);
+                              gsm.println("FLOOD ALERT!!");
+                          delay(100);
+                          gsm.println((char)26);
+                          delay(5000);
+                                     gsm.println("AT+CMGF=1");
+                        delay(1000);
+                          gsm.println("AT+CMGS=\"+918005235872\"\r"); 
+                          delay(1000);
+                              gsm.println("FLOOD ALERT!!");
+                          delay(100);
+                          gsm.println((char)26);
+                          delay(1000);
+
+             Serial.println("msg send");
+             exit(0);
  }
 else
 {
